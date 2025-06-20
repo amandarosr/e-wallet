@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { fetchRates, expensesAction, totalAction } from '../redux/actions';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { fetchRates, expensesAction, totalAction } from "../redux/actions";
 
 class WalletForm extends Component {
   state = {
-    valor: '',
-    descricao: '',
-    moeda: 'USD',
-    metodo: 'Dinheiro',
-    tag: 'Alimentação',
+    valor: "",
+    descricao: "",
+    moeda: "USD",
+    metodo: "Dinheiro",
+    tag: "Alimentação",
   };
 
   handleChange = ({ target }) => {
@@ -19,13 +19,14 @@ class WalletForm extends Component {
     });
   };
 
-  resetForm = () => this.setState({
-    valor: '',
-    descricao: '',
-    moeda: 'USD',
-    metodo: 'Dinheiro',
-    tag: 'Alimentação',
-  });
+  resetForm = () =>
+    this.setState({
+      valor: "",
+      descricao: "",
+      moeda: "USD",
+      metodo: "Dinheiro",
+      tag: "Alimentação",
+    });
 
   addExpense = async () => {
     const { dispatch } = this.props;
@@ -51,61 +52,62 @@ class WalletForm extends Component {
     const { valor, descricao, moeda, metodo, tag } = this.state;
     return (
       <form>
-        <h3>Adicione a sua despesa</h3>
-        <input
-          type="text"
-          data-testid="value-input"
-          placeholder="Valor da despesa"
-          name="valor"
-          value={ valor }
-          onChange={ this.handleChange }
-        />
-        <input
-          type="text"
-          data-testid="description-input"
-          placeholder="Descrição da despesa"
-          name="descricao"
-          value={ descricao }
-          onChange={ this.handleChange }
-        />
-        <select
-          data-testid="currency-input"
-          name="moeda"
-          value={ moeda }
-          onChange={ this.handleChange }
-        >
-          {currencies ? currencies.map((c, index) => (
-            <option key={ index }>{c}</option>
-          )) : null }
-        </select>
-        <select
-          data-testid="method-input"
-          name="metodo"
-          value={ metodo }
-          onChange={ this.handleChange }
-        >
-          <option>Dinheiro</option>
-          <option>Cartão de crédito</option>
-          <option>Cartão de débito</option>
-        </select>
-        <select
-          data-testid="tag-input"
-          name="tag"
-          value={ tag }
-          onChange={ this.handleChange }
-        >
-          <option>Alimentação</option>
-          <option>Lazer</option>
-          <option>Trabalho</option>
-          <option>Transporte</option>
-          <option>Saúde</option>
-        </select>
-        <button
-          type="button"
-          onClick={ this.addExpense }
-        >
-          Adicionar despesa
-        </button>
+        <h3>Adicione sua despesa</h3>
+        <div>
+          <input
+            type="text"
+            data-testid="value-input"
+            placeholder="Valor da despesa"
+            name="valor"
+            value={valor}
+            onChange={this.handleChange}
+          />
+          <input
+            type="text"
+            data-testid="description-input"
+            placeholder="Descrição da despesa"
+            name="descricao"
+            value={descricao}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div>
+          <select
+            data-testid="currency-input"
+            name="moeda"
+            value={moeda}
+            onChange={this.handleChange}
+          >
+            {currencies
+              ? currencies.map((c, index) => <option key={index}>{c}</option>)
+              : null}
+          </select>
+          <select
+            data-testid="method-input"
+            name="metodo"
+            value={metodo}
+            onChange={this.handleChange}
+          >
+            <option>Dinheiro</option>
+            <option>Cartão de crédito</option>
+            <option>Cartão de débito</option>
+          </select>
+          <select
+            data-testid="tag-input"
+            name="tag"
+            value={tag}
+            onChange={this.handleChange}
+          >
+            <option>Alimentação</option>
+            <option>Lazer</option>
+            <option>Trabalho</option>
+            <option>Transporte</option>
+            <option>Saúde</option>
+          </select>
+          <button type="button" onClick={this.addExpense}>
+            Adicionar despesa
+          </button>
+        </div>
       </form>
     );
   }
