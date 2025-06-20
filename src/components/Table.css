@@ -5,7 +5,7 @@ table {
 
 thead, tr th {
   color: olive;
-  border: 1px solid darkgrey;
+  border: 2px solid rgba(128, 128, 0, 0.492);
   border-radius: 5px;
   border-collapse: collapse;
   padding: 5px 15px;
@@ -15,5 +15,28 @@ tbody tr, tb {
   border: none;
   border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.delete-btn {
+  background-color: brown;
+  border-radius: 30px;
+  padding: 5px;
+  margin: 5px;
+  height: 38px;
+  width: 38px;
+}
+
+.delete-btn:hover {
+  border: 2px solid rgb(205, 0, 0);
+}
+
+.delete-btn img {
+  transform: rotate(45deg);
+  height: 19px;
+  margin-bottom: -3px;
+}
+
+.edit-btn:hover {
+  border: 2px rgb(177, 177, 0) solid
 }
 

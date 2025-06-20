@@ -16,3 +16,17 @@ form {
 form button {
     margin: 15px;
 }
+
+.add-btn {
+    padding: 8px;
+    border-radius: 30px;
+}
+
+.add-btn img {
+    height: 25px;
+    margin-bottom: -5px;
+}
+
+.add-btn:hover {
+    border: 2px rgb(177, 177, 0) solid
+}

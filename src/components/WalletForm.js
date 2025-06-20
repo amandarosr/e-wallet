@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchRates, expensesAction, totalAction } from "../redux/actions";
+import plus from "../images/plus.png";
 
 class WalletForm extends Component {
   state = {
@@ -104,8 +105,8 @@ class WalletForm extends Component {
             <option>Transporte</option>
             <option>Saúde</option>
           </select>
-          <button type="button" onClick={this.addExpense}>
-            Adicionar despesa
+          <button className="add-btn" type="button" onClick={this.addExpense}>
+            <img src={ plus } alt="plus-sign" />
           </button>
         </div>
       </form>
