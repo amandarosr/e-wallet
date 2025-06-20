@@ -1,0 +1,6 @@
+.wallet-page {
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    /* justify-content: flex-start; */
+}

@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import WalletForm from '../components/WalletForm';
 import Table from '../components/Table';
 import { fetchCurr } from '../redux/actions';
+import "./Wallet.css";
 
 class Wallet extends React.Component {
   componentDidMount() {
@@ -15,9 +16,9 @@ class Wallet extends React.Component {
   render() {
     const { email, currencies, total, wFormDisplay } = this.props;
     return (
-      <div>
+      <div className="wallet-page">
         <Header email={ email } total={ total } />
-        <h1>TrybeWallet</h1>
+        <h1>e-Wallet</h1>
         { wFormDisplay ? (
           <WalletForm currencies={ currencies } title="WalletForm" />
         ) : null }
