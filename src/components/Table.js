@@ -77,7 +77,7 @@ class Table extends Component {
         <h3>Despesas</h3>
         <table className="table">
           <thead>
-            <tr>
+            <tr className="head-row">
               <th>Descrição</th>
               <th>Tag</th>
               <th>Método de pagamento</th>
@@ -123,7 +123,7 @@ class Table extends Component {
         </table>
         { formDisplay ? (
           <form>
-            <h3>Edit</h3>
+            <h3>Editar despesa</h3>
             <input
               type="text"
               data-testid="value-input"
