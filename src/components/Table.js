@@ -81,15 +81,15 @@ class Table extends Component {
         <table className="table">
           <thead>
             <tr className="head-row">
-              <th>Descrição</th>
-              <th>Tag</th>
-              <th>Método de pagamento</th>
-              <th>Valor</th>
-              <th>Moeda</th>
-              <th>Câmbio utilizado</th>
-              <th>Valor convertido</th>
-              <th>Moeda de conversão</th>
-              <th>Editar/Excluir</th>
+              <th>descrição</th>
+              <th>tag</th>
+              <th>método de pagamento</th>
+              <th>valor</th>
+              <th>moeda</th>
+              <th>câmbio utilizado</th>
+              <th>valor convertido</th>
+              <th>moeda de conversão</th>
+              <th>editar/excluir</th>
             </tr>
           </thead>
           <tbody>
@@ -113,7 +113,7 @@ class Table extends Component {
                     <td>Real</td>
                     <td>
                       <button onClick={this.editExpense} className="edit-btn">
-                        Editar
+                        editar
                       </button>
                       <button
                         onClick={this.deleteExpense}
@@ -124,7 +124,19 @@ class Table extends Component {
                     </td>
                   </tr>
                 ))
-              : null}
+              : (
+                <tr className="placeholder-row">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              )}
           </tbody>
         </table>
         {formDisplay ? (
@@ -179,7 +191,7 @@ class Table extends Component {
               <option>Saúde</option>
             </select>
             <button type="button" onClick={this.editExpenseState}>
-              Editar despesa
+              editar despesa
             </button>
           </form>
         ) : null}

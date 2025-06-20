@@ -1,14 +1,16 @@
 table {
   text-align: center;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
 }
 
 thead, tr th {
   color: olive;
-  border: 2px solid rgba(128, 128, 0, 0.492);
-  border-radius: 5px;
   border-collapse: collapse;
-  padding: 5px 15px;
+  padding: 5px 15px 15px;
+}
+
+th {
+  width: 150px;
 }
 
 tbody tr, tb {
@@ -38,5 +40,9 @@ tbody tr, tb {
 
 .edit-btn:hover {
   border: 2px rgb(177, 177, 0) solid
+}
+
+.placeholder-row td {
+  height: 60px;
 }
 
