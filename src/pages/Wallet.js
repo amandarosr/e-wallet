@@ -18,9 +18,9 @@ class Wallet extends React.Component {
     return (
       <div className="wallet-page">
         <Header email={ email } total={ total } />
-        <h1>e-Wallet</h1>
+        <h1 className="wallet-title">e-Wallet</h1>
         { wFormDisplay ? (
-          <WalletForm currencies={ currencies } title="WalletForm" />
+          <WalletForm currencies={ currencies } />
         ) : null }
         <Table />
       </div>

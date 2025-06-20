@@ -47,11 +47,11 @@ class WalletForm extends Component {
   };
 
   render() {
-    const { currencies, title } = this.props;
+    const { currencies } = this.props;
     const { valor, descricao, moeda, metodo, tag } = this.state;
     return (
       <form>
-        <h3>{ title }</h3>
+        <h3>Adicione a sua despesa</h3>
         <input
           type="text"
           data-testid="value-input"

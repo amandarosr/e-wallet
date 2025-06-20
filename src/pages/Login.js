@@ -45,7 +45,7 @@ class Login extends React.Component {
     // const { history } = this.props;
     return (
       <div className="login-container">
-        <h1 className="login-title">Login</h1>
+        <h1 className="login-title">e-Wallet</h1>
         <div>
           <label htmlFor="email" className="input-container">
             e-mail
@@ -78,7 +78,7 @@ class Login extends React.Component {
           disabled={isDisabled}
           onClick={this.sendToStore}
         >
-          Entrar
+          entrar
         </button>
       </div>
     );

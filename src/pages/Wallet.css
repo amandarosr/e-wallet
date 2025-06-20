@@ -1,6 +1,10 @@
 .wallet-page {
     display: flex;
     flex-direction: column;
-    background-color: red;
-    /* justify-content: flex-start; */
+}
+
+.wallet-title {
+    color: olive;
+    text-shadow: -1px 3px 0px rgba(159,159,159,0.3);
+    font-size: 40px;
 }

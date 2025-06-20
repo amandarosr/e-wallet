@@ -13,6 +13,12 @@ body {
 
 }
 
+.login-title {
+  color: olive;
+  text-shadow: -1px 3px 0px rgba(159,159,159,0.3);
+  font-size: 40px;
+}
+
 .input-container {
   display: inline;
   font-size: 20px;
@@ -20,8 +26,9 @@ body {
 }
 
 .input-container input {
-  border: 1px solid darkgrey;
+  border: none;
   border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   font-size: 22px;
   margin: 5px;
   padding: 5px;
@@ -29,13 +36,13 @@ body {
 }
 
 .login-submit {
-  background-color: olive;
+  background-color: rgb(128, 128, 0, 0.8);
   color: white;
   border: 1px solid darkgrey;
-  border-radius: 10px;
+  border-radius: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   padding: 10px 25px;
   font-size: 22px;
-  font-weight: 600;
   margin-top: 20px;
 }
 

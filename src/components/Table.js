@@ -74,7 +74,7 @@ class Table extends Component {
     const { valor, descricao, metodo, moeda, tag } = this.state;
     return (
       <div>
-        <h3>Table</h3>
+        <h3>Despesas</h3>
         <table className="table">
           <thead>
             <tr>
