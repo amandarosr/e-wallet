@@ -24,17 +24,17 @@ tbody tr, tb {
   border-radius: 30px;
   padding: 5px;
   margin: 5px;
-  height: 38px;
-  width: 38px;
+  height: 36px;
+  width: 36px;
 }
 
 .delete-btn:hover {
-  border: 2px solid rgb(205, 0, 0);
+  border: 2px solid red;
 }
 
 .delete-btn img {
   transform: rotate(45deg);
-  height: 19px;
+  height: 18px;
   margin-bottom: -3px;
 }
 
@@ -43,6 +43,6 @@ tbody tr, tb {
 }
 
 .placeholder-row td {
-  height: 60px;
+  height: 70px;
 }
 
