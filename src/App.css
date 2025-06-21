@@ -1,4 +1,5 @@
 body {
+  background-color: mintcream;
   display: flex;
   justify-content: center;
   font-family: Helvetica;
@@ -18,13 +19,17 @@ body {
 .login-title {
   color: olive;
   text-shadow: -1px 3px 0px rgba(159,159,159,0.3);
-  font-size: 40px;
+  font-size: 45px;
 }
 
 .input-container {
   display: inline;
   font-size: 20px;
   margin: 0 15px;
+}
+
+input {
+  background-color: mintcream;
 }
 
 input, select {
