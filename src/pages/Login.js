@@ -50,7 +50,7 @@ class Login extends React.Component {
           <img src={walletLogo} alt="wallet logo" className="walletLogo"/>
           <h1 className="login-title">e-Wallet</h1>
         </div>
-        <div>
+        <div className="login-inputs">
           <label htmlFor="email" className="input-container">
             e-mail
             <input
