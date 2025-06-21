@@ -3,6 +3,19 @@
     flex-direction: column;
 }
 
+.title-container {
+    display: flex;
+    align-items: center;
+
+}
+
+.walletLogo {
+    display: inline;
+    height: 50px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
 .wallet-title {
     color: olive;
     text-shadow: -1px 3px 0px rgba(159,159,159,0.3);

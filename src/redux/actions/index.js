@@ -22,9 +22,9 @@ export const expensesAction = (info) => ({
 //   payload: rates,
 // });
 
-export const totalAction = () => ({
-  type: 'UPDATE_TOTAL',
-});
+// export const totalAction = () => ({
+//   type: 'UPDATE_TOTAL',
+// });
 
 export const deleteAction = (exp) => ({
   type: 'DELETE_EXP',

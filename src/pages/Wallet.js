@@ -1,10 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import Header from '../components/Header';
-import WalletForm from '../components/WalletForm';
-import Table from '../components/Table';
-// import { fetchCurr } from '../redux/actions';
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import Header from "../components/Header";
+import WalletForm from "../components/WalletForm";
+import Table from "../components/Table";
+import walletLogo from "../images/walletOlive.png";
 import "./Wallet.css";
 
 class Wallet extends React.Component {
@@ -17,11 +17,12 @@ class Wallet extends React.Component {
     const { email, currencies, total, wFormDisplay } = this.props;
     return (
       <div className="wallet-page">
-        <Header email={ email } total={ total } />
-        <h1 className="wallet-title">e-Wallet</h1>
-        { wFormDisplay ? (
-          <WalletForm currencies={ currencies } />
-        ) : null }
+        <Header email={email} total={total} />
+        <div className="title-container">
+          <img src={walletLogo} alt="wallet" className="walletLogo" />
+          <h1 className="wallet-title">e-Wallet</h1>
+        </div>
+        {wFormDisplay ? <WalletForm currencies={currencies} /> : null}
         <Table />
       </div>
     );
@@ -40,11 +41,7 @@ Wallet.propTypes = {
   //   push: PropTypes.func,
   // }),
   email: PropTypes.string,
-  currencies: PropTypes.arrayOf(
-    PropTypes.shape(
-      PropTypes.string,
-    ),
-  ),
+  currencies: PropTypes.arrayOf(PropTypes.shape(PropTypes.string)),
   total: PropTypes.number,
 }.isRequired;
 

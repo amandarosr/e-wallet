@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchRates, expensesAction, totalAction } from "../redux/actions";
+import { expensesAction } from "../redux/actions";
 import plus from "../images/plus.png";
 
 class WalletForm extends Component {
@@ -40,7 +40,7 @@ class WalletForm extends Component {
       tag,
     };
     dispatch(expensesAction(unit));
-    dispatch(totalAction());
+    // dispatch(totalAction());
     this.resetForm();
   };
 
@@ -49,12 +49,12 @@ class WalletForm extends Component {
     const { valor, descricao, metodo, tag } = this.state;
     return (
       <form>
-        <h3>Adicione sua despesa</h3>
+        <h3>Adicione uma despesa</h3>
         <div>
           <input
             type="text"
             data-testid="value-input"
-            placeholder="Valor da despesa"
+            placeholder="valor da despesa"
             name="valor"
             value={valor}
             onChange={this.handleChange}
@@ -62,7 +62,7 @@ class WalletForm extends Component {
           <input
             type="text"
             data-testid="description-input"
-            placeholder="Descrição da despesa"
+            placeholder="descrição da despesa"
             name="descricao"
             value={descricao}
             onChange={this.handleChange}
@@ -73,9 +73,9 @@ class WalletForm extends Component {
             value={metodo}
             onChange={this.handleChange}
           >
-            <option>Dinheiro</option>
-            <option>Cartão de crédito</option>
-            <option>Cartão de débito</option>
+            <option>dinheiro</option>
+            <option>cartão de crédito</option>
+            <option>cartão de débito</option>
           </select>
           <select
             data-testid="tag-input"
@@ -83,11 +83,11 @@ class WalletForm extends Component {
             value={tag}
             onChange={this.handleChange}
           >
-            <option>Alimentação</option>
-            <option>Lazer</option>
-            <option>Trabalho</option>
-            <option>Transporte</option>
-            <option>Saúde</option>
+            <option>alimentação</option>
+            <option>lazer</option>
+            <option>trabalho</option>
+            <option>transporte</option>
+            <option>saúde</option>
           </select>
           <button className="add-btn" type="button" onClick={this.addExpense}>
             <img src={plus} alt="plus-sign" />

@@ -7,8 +7,6 @@ class Header extends Component {
     return (
       <div>
         <h3 data-testid="email-field">{ email }</h3>
-        {/* <span data-testid="total-field">{ total.toFixed(2) }</span> */}
-        {/* <span data-testid="header-currency-field"> BRL</span> */}
       </div>
     );
   }

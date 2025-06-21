@@ -3,9 +3,15 @@ table, thead, tr, th {
   overflow-x: auto;
 }
 
+.table-container {
+  border: 2px dotted olive;
+  border-radius: 15px;
+}
+
 thead, tr th {
   color: olive;
-  padding: 5px 15px 15px;
+  font-size: 22px;
+  padding: 5px 15px 10px;
 }
 
 th {

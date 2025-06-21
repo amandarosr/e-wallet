@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
   deleteAction,
-  totalAction,
   editExpAction,
   displayDFormAction,
   displayEFormAction,
@@ -28,7 +27,6 @@ class Table extends Component {
     //   e.id = index;
     // });
     dispatch(deleteAction(newExp));
-    dispatch(totalAction());
   };
 
   editExpense = ({ target }) => {
@@ -57,7 +55,6 @@ class Table extends Component {
     };
     const newExp = expenses.map((e) => (e.id === real ? editedExp : e));
     dispatch(editExpAction(newExp));
-    dispatch(totalAction());
     dispatch(displayDFormAction());
   };
 
@@ -74,45 +71,47 @@ class Table extends Component {
     return (
       <div>
         <h3>Despesas</h3>
-        <table className="table">
-          <thead>
-            <tr className="head-row">
-              <th>descrição</th>
-              <th>valor</th>
-              <th>tag</th>
-              <th>método de pagamento</th>
-              <th>editar/excluir</th>
-            </tr>
-          </thead>
-          <tbody>
-            {expenses ? (
-              expenses.map((e) => (
-                <tr key={e.id} id={e.id}>
-                  <td>{e.description}</td>
-                  <td>R${parseFloat(e.value).toFixed(2)}</td>
-                  <td>{e.tag}</td>
-                  <td>{e.method}</td>
-                  <td>
-                    <button
-                      onClick={this.editExpense}
-                      data-testid="edit-btn"
-                      className="edit-btn"
-                    >
-                      editar
-                    </button>
-                    <button
-                      onClick={this.deleteExpense}
-                      className="delete-btn"
-                      data-testid="delete-btn"
-                    >
-                      <img src={plus} alt="x-sign" />
-                    </button>
-                  </td>
-                </tr>
-              ))
-            ) : null }
-          </tbody>
-        </table>
+        <div className="table-container">
+          <table className="table">
+            <thead>
+              <tr className="head-row">
+                <th>descrição</th>
+                <th>valor</th>
+                <th>tag</th>
+                <th>método de pagamento</th>
+                <th>editar/excluir</th>
+              </tr>
+            </thead>
+            <tbody>
+              {expenses
+                ? expenses.map((e) => (
+                    <tr key={e.id} id={e.id}>
+                      <td>{e.description}</td>
+                      <td>R${parseFloat(e.value).toFixed(2)}</td>
+                      <td>{e.tag}</td>
+                      <td>{e.method}</td>
+                      <td>
+                        <button
+                          onClick={this.editExpense}
+                          data-testid="edit-btn"
+                          className="edit-btn"
+                        >
+                          editar
+                        </button>
+                        <button
+                          onClick={this.deleteExpense}
+                          className="delete-btn"
+                          data-testid="delete-btn"
+                        >
+                          <img src={plus} alt="x-sign" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                : null}
+            </tbody>
+          </table>
+        </div>
         {formDisplay ? (
           <form>
             <h3>Editar despesa</h3>
@@ -132,16 +131,6 @@ class Table extends Component {
               value={valor}
               onChange={this.handleChange}
             />
-            {/* <select
-              data-testid="currency-input"
-              name="moeda"
-              value={moeda}
-              onChange={this.handleChange}
-            >
-              {currencies
-                ? currencies.map((c, index) => <option key={index}>{c}</option>)
-                : null}
-            </select> */}
             <select
               data-testid="method-input"
               name="metodo"
