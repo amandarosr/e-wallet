@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchRates, expensesAction, totalAction } from "../redux/actions";
 import plus from "../images/plus.png";
@@ -8,7 +8,6 @@ class WalletForm extends Component {
   state = {
     valor: "",
     descricao: "",
-    moeda: "USD",
     metodo: "Dinheiro",
     tag: "Alimentação",
   };
@@ -24,24 +23,21 @@ class WalletForm extends Component {
     this.setState({
       valor: "",
       descricao: "",
-      moeda: "USD",
       metodo: "Dinheiro",
       tag: "Alimentação",
     });
 
   addExpense = async () => {
     const { dispatch } = this.props;
-    await dispatch(fetchRates());
-    const { valor, descricao, moeda, metodo, tag } = this.state;
-    const { expenses, rates } = this.props;
+    // await dispatch(fetchRates());
+    const { valor, descricao, metodo, tag } = this.state;
+    const { expenses } = this.props;
     const unit = {
       id: expenses.length,
       value: valor,
       description: descricao,
-      currency: moeda,
       method: metodo,
       tag,
-      exchangeRates: rates,
     };
     dispatch(expensesAction(unit));
     dispatch(totalAction());
@@ -49,8 +45,8 @@ class WalletForm extends Component {
   };
 
   render() {
-    const { currencies } = this.props;
-    const { valor, descricao, moeda, metodo, tag } = this.state;
+    // const { currencies } = this.props;
+    const { valor, descricao, metodo, tag } = this.state;
     return (
       <form>
         <h3>Adicione sua despesa</h3>
@@ -71,18 +67,6 @@ class WalletForm extends Component {
             value={descricao}
             onChange={this.handleChange}
           />
-        </div>
-        <div>
-          <select
-            data-testid="currency-input"
-            name="moeda"
-            value={moeda}
-            onChange={this.handleChange}
-          >
-            {currencies
-              ? currencies.map((c, index) => <option key={index}>{c}</option>)
-              : null}
-          </select>
           <select
             data-testid="method-input"
             name="metodo"
@@ -106,7 +90,7 @@ class WalletForm extends Component {
             <option>Saúde</option>
           </select>
           <button className="add-btn" type="button" onClick={this.addExpense}>
-            <img src={ plus } alt="plus-sign" />
+            <img src={plus} alt="plus-sign" />
           </button>
         </div>
       </form>
@@ -116,14 +100,14 @@ class WalletForm extends Component {
 
 const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
-  currencies: state.wallet.currencies,
-  rates: state.wallet.rates,
+  // currencies: state.wallet.currencies,
+  // rates: state.wallet.rates,
   total: state.wallet.total,
 });
 
-WalletForm.propTypes = {
-  currencies: PropTypes.string,
-  title: PropTypes.string,
-}.isRequired;
+// WalletForm.propTypes = {
+//   currencies: PropTypes.string,
+//   title: PropTypes.string,
+// }.isRequired;
 
 export default connect(mapStateToProps)(WalletForm);

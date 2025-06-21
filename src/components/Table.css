@@ -1,11 +1,10 @@
-table {
+table, thead, tr, th {
   text-align: center;
-  /* overflow-x: scroll; */
+  overflow-x: auto;
 }
 
 thead, tr th {
   color: olive;
-  border-collapse: collapse;
   padding: 5px 15px 15px;
 }
 

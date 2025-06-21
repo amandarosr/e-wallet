@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import WalletForm from '../components/WalletForm';
 import Table from '../components/Table';
-import { fetchCurr } from '../redux/actions';
+// import { fetchCurr } from '../redux/actions';
 import "./Wallet.css";
 
 class Wallet extends React.Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchCurr());
-  }
+  // componentDidMount() {
+  //   const { dispatch } = this.props;
+  //   dispatch(fetchCurr());
+  // }
 
   render() {
     const { email, currencies, total, wFormDisplay } = this.props;

@@ -15,7 +15,6 @@ class Table extends Component {
   state = {
     valor: "",
     descricao: "",
-    moeda: "",
     metodo: "",
     tag: "",
     editId: "",
@@ -37,7 +36,6 @@ class Table extends Component {
     const { expenses, dispatch } = this.props;
     this.setState({
       editId: targetId,
-      moeda: expenses[parseFloat(targetId)].currency,
       metodo: expenses[parseFloat(targetId)].method,
       tag: expenses[parseFloat(targetId)].tag,
       // descricao: expenses[parseFloat(targetId)].description,
@@ -48,12 +46,10 @@ class Table extends Component {
 
   editExpenseState = () => {
     const { dispatch, expenses } = this.props;
-    const { valor, descricao, moeda, metodo, tag, editId } = this.state;
+    const { valor, descricao, metodo, tag, editId } = this.state;
     const real = parseFloat(editId);
     const editedExp = {
       id: expenses[real].id,
-      currency: moeda,
-      exchangeRates: expenses[real].exchangeRates,
       method: metodo,
       tag,
       value: valor,
@@ -73,8 +69,8 @@ class Table extends Component {
   };
 
   render() {
-    const { expenses, currencies, formDisplay } = this.props;
-    const { valor, descricao, metodo, moeda, tag } = this.state;
+    const { expenses, formDisplay } = this.props;
+    const { valor, descricao, metodo, tag } = this.state;
     return (
       <div>
         <h3>Despesas</h3>
@@ -82,13 +78,9 @@ class Table extends Component {
           <thead>
             <tr className="head-row">
               <th>descrição</th>
+              <th>valor</th>
               <th>tag</th>
               <th>método de pagamento</th>
-              <th>valor</th>
-              <th>moeda</th>
-              <th>câmbio utilizado</th>
-              <th>valor convertido</th>
-              <th>moeda de conversão</th>
               <th>editar/excluir</th>
             </tr>
           </thead>
@@ -97,20 +89,9 @@ class Table extends Component {
               expenses.map((e) => (
                 <tr key={e.id} id={e.id}>
                   <td>{e.description}</td>
+                  <td>R${parseFloat(e.value).toFixed(2)}</td>
                   <td>{e.tag}</td>
                   <td>{e.method}</td>
-                  <td>{parseFloat(e.value).toFixed(2)}</td>
-                  <td>{e.exchangeRates[e.currency].name}</td>
-                  <td>
-                    {parseFloat(e.exchangeRates[e.currency].ask).toFixed(2)}
-                  </td>
-                  <td>
-                    {(
-                      parseFloat(e.value) *
-                      parseFloat(e.exchangeRates[e.currency].ask)
-                    ).toFixed(2)}
-                  </td>
-                  <td>Real</td>
                   <td>
                     <button
                       onClick={this.editExpense}
@@ -137,21 +118,21 @@ class Table extends Component {
             <h3>Editar despesa</h3>
             <input
               type="text"
-              data-testid="value-input"
-              placeholder="Valor da despesa"
-              name="valor"
-              value={valor}
-              onChange={this.handleChange}
-            />
-            <input
-              type="text"
               data-testid="description-input"
               placeholder="Descrição da despesa"
               name="descricao"
               value={descricao}
               onChange={this.handleChange}
             />
-            <select
+            <input
+              type="text"
+              data-testid="value-input"
+              placeholder="Valor da despesa"
+              name="valor"
+              value={valor}
+              onChange={this.handleChange}
+            />
+            {/* <select
               data-testid="currency-input"
               name="moeda"
               value={moeda}
@@ -160,7 +141,7 @@ class Table extends Component {
               {currencies
                 ? currencies.map((c, index) => <option key={index}>{c}</option>)
                 : null}
-            </select>
+            </select> */}
             <select
               data-testid="method-input"
               name="metodo"
@@ -194,8 +175,6 @@ class Table extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  expenses: state.wallet.expenses,
-  currencies: state.wallet.currencies,
   formDisplay: state.wallet.formDisplay,
 });
 
@@ -207,10 +186,6 @@ Table.propTypes = {
       tag: PropTypes.string,
       value: PropTypes.string,
       method: PropTypes.string,
-      exchangeRates: PropTypes.shape({
-        name: PropTypes.string,
-        ask: PropTypes.string,
-      }),
     })
   ),
 }.isRequired;

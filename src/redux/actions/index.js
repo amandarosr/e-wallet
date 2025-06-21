@@ -12,15 +12,15 @@ export const expensesAction = (info) => ({
   payload: info,
 });
 
-const currenciesAction = (info) => ({
-  type: 'FETCH_CURR',
-  payload: info,
-});
+// const currenciesAction = (info) => ({
+//   type: 'FETCH_CURR',
+//   payload: info,
+// });
 
-const ratesAction = (rates) => ({
-  type: 'FETCH_RATES',
-  payload: rates,
-});
+// const ratesAction = (rates) => ({
+//   type: 'FETCH_RATES',
+//   payload: rates,
+// });
 
 export const totalAction = () => ({
   type: 'UPDATE_TOTAL',
@@ -48,18 +48,18 @@ export const displayDFormAction = () => ({
   type: 'DISPLAY_WF',
 });
 
-export const fetchCurr = () => (dispatch) => {
-  fetch('https://economia.awesomeapi.com.br/json/all')
-    .then((response) => response.json())
-    .then((data) => {
-      delete data.USDT;
-      dispatch(currenciesAction(Object.keys(data)));
-    });
-};
+// export const fetchCurr = () => (dispatch) => {
+//   fetch('https://economia.awesomeapi.com.br/json/all')
+//     .then((response) => response.json())
+//     .then((data) => {
+//       delete data.USDT;
+//       dispatch(currenciesAction(Object.keys(data)));
+//     });
+// };
 
-export const fetchRates = () => async (dispatch) => {
-  const response = await fetch('https://economia.awesomeapi.com.br/json/all');
-  const data = await response.json();
-  delete data.USDT;
-  dispatch(ratesAction(data));
-};
+// export const fetchRates = () => async (dispatch) => {
+//   const response = await fetch('https://economia.awesomeapi.com.br/json/all');
+//   const data = await response.json();
+//   delete data.USDT;
+//   dispatch(ratesAction(data));
+// };

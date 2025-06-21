@@ -10,10 +10,6 @@ const INITIAL_STATE = {
 
 const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case 'FETCH_CURR':
-    return { ...state, currencies: action.payload };
-  case 'FETCH_RATES':
-    return { ...state, rates: action.payload };
   case 'SAVE_EXP':
     return { ...state, expenses: [...state.expenses, action.payload] };
   case 'UPDATE_TOTAL':
