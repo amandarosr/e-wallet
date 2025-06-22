@@ -23,9 +23,6 @@ class Table extends Component {
     const { expenses, dispatch } = this.props;
     const rowId = target.parentNode.parentNode.id;
     const newExp = expenses.filter((e) => e.id !== parseFloat(rowId));
-    // newExp.forEach((e, index) => {
-    //   e.id = index;
-    // });
     dispatch(deleteAction(newExp));
   };
 
@@ -66,8 +63,9 @@ class Table extends Component {
   };
 
   render() {
-    const { expenses, formDisplay } = this.props;
+    const { expenses, formDisplay } = this.props;        
     const { valor, descricao, metodo, tag } = this.state;
+
     return (
       <div>
         <h3 className="table-title">despesas</h3>
@@ -114,7 +112,7 @@ class Table extends Component {
         </div>
         {formDisplay ? (
           <form>
-            <h3>Editar despesa</h3>
+            <h3>editar despesa</h3>
             <input
               type="text"
               data-testid="description-input"
@@ -137,9 +135,9 @@ class Table extends Component {
               value={metodo}
               onChange={this.handleChange}
             >
-              <option>Dinheiro</option>
-              <option>Cartão de crédito</option>
-              <option>Cartão de débito</option>
+              <option>dinheiro</option>
+              <option>cartão de crédito</option>
+              <option>cartão de débito</option>
             </select>
             <select
               data-testid="tag-input"
@@ -147,11 +145,11 @@ class Table extends Component {
               value={tag}
               onChange={this.handleChange}
             >
-              <option>Alimentação</option>
-              <option>Lazer</option>
-              <option>Trabalho</option>
-              <option>Transporte</option>
-              <option>Saúde</option>
+              <option>alimentação</option>
+              <option>lazer</option>
+              <option>trabalho</option>
+              <option>transporte</option>
+              <option>saúde</option>
             </select>
             <button type="button" onClick={this.editExpenseState}>
               editar despesa
@@ -164,6 +162,7 @@ class Table extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  expenses: state.wallet.expenses,
   formDisplay: state.wallet.formDisplay,
 });
 

@@ -12,20 +12,6 @@ export const expensesAction = (info) => ({
   payload: info,
 });
 
-// const currenciesAction = (info) => ({
-//   type: 'FETCH_CURR',
-//   payload: info,
-// });
-
-// const ratesAction = (rates) => ({
-//   type: 'FETCH_RATES',
-//   payload: rates,
-// });
-
-// export const totalAction = () => ({
-//   type: 'UPDATE_TOTAL',
-// });
-
 export const deleteAction = (exp) => ({
   type: 'DELETE_EXP',
   payload: exp,

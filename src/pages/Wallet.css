@@ -64,5 +64,5 @@ h3 {
 }
 
 .add-btn:hover {
-    border: 2px rgb(177, 177, 0) solid
+    background-color: olive;
 }

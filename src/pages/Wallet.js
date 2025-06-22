@@ -14,15 +14,15 @@ class Wallet extends React.Component {
   // }
 
   render() {
-    const { email, currencies, total, wFormDisplay } = this.props;
+    const { email, wFormDisplay } = this.props;
     return (
       <div className="wallet-page">
-        <Header email={email} total={total} />
+        <Header email={email} />
         <div className="title-container">
           <img src={walletLogo} alt="wallet" className="walletLogo" />
           <h1 className="wallet-title">e-Wallet</h1>
         </div>
-        {wFormDisplay ? <WalletForm currencies={currencies} /> : null}
+        {wFormDisplay ? <WalletForm /> : null}
         <Table />
       </div>
     );
@@ -31,8 +31,6 @@ class Wallet extends React.Component {
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
-  currencies: state.wallet.currencies,
-  total: state.wallet.total,
   wFormDisplay: state.wallet.wFormDisplay,
 });
 
@@ -41,8 +39,6 @@ Wallet.propTypes = {
   //   push: PropTypes.func,
   // }),
   email: PropTypes.string,
-  currencies: PropTypes.arrayOf(PropTypes.shape(PropTypes.string)),
-  total: PropTypes.number,
 }.isRequired;
 
 export default connect(mapStateToProps)(Wallet);

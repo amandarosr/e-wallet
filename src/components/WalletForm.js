@@ -29,7 +29,6 @@ class WalletForm extends Component {
 
   addExpense = async () => {
     const { dispatch } = this.props;
-    // await dispatch(fetchRates());
     const { valor, descricao, metodo, tag } = this.state;
     const { expenses } = this.props;
     const unit = {
@@ -40,12 +39,11 @@ class WalletForm extends Component {
       tag,
     };
     dispatch(expensesAction(unit));
-    // dispatch(totalAction());
     this.resetForm();
+    
   };
 
   render() {
-    // const { currencies } = this.props;
     const { valor, descricao, metodo, tag } = this.state;
     return (
       <form>
@@ -99,10 +97,7 @@ class WalletForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  expenses: state.wallet.expenses,
-  // currencies: state.wallet.currencies,
-  // rates: state.wallet.rates,
-  total: state.wallet.total,
+  expenses: state.wallet.expenses
 });
 
 // WalletForm.propTypes = {
