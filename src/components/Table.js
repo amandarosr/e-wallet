@@ -9,6 +9,7 @@ import {
 } from "../redux/actions";
 import "./Table.css";
 import plus from "../images/plus.png";
+import pencil from "../images/pencil.png";
 
 class Table extends Component {
   state = {
@@ -94,7 +95,7 @@ class Table extends Component {
                           data-testid="edit-btn"
                           className="edit-btn"
                         >
-                          editar
+                          <img src={pencil} alt="pencil" />
                         </button>
                         <button
                           onClick={this.deleteExpense}
