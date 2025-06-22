@@ -34,7 +34,7 @@ class Table extends Component {
       editId: targetId,
       metodo: expenses[parseFloat(targetId)].method,
       tag: expenses[parseFloat(targetId)].tag,
-      // descricao: expenses[parseFloat(targetId)].description,
+      descricao: expenses[parseFloat(targetId)].description,
       valor: expenses[parseFloat(targetId)].value,
     });
     dispatch(displayEFormAction());
@@ -117,7 +117,7 @@ class Table extends Component {
             <input
               type="text"
               data-testid="description-input"
-              placeholder="Descrição da despesa"
+              placeholder="descrição da despesa"
               name="descricao"
               value={descricao}
               onChange={this.handleChange}
@@ -125,7 +125,7 @@ class Table extends Component {
             <input
               type="text"
               data-testid="value-input"
-              placeholder="Valor da despesa"
+              placeholder="valor da despesa"
               name="valor"
               value={valor}
               onChange={this.handleChange}
