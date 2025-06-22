@@ -1,0 +1,68 @@
+.wallet-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.email-title {
+    background-color: rgba(128, 128, 0, 0.8);
+    color: white;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 20px;
+    width: auto;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+
+}
+
+.walletLogo {
+    display: inline;
+    height: 50px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.wallet-title {
+    color: olive;
+    text-shadow: -1px 3px 0px rgba(159,159,159,0.3);
+    font-size: 45px;
+}
+
+form {
+    margin-bottom: 25px;
+}
+
+form button {
+    margin: 15px;
+}
+
+.form-title {
+    margin-bottom: -5px;
+}
+
+.table-title {
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-weight: 400;
+}
+
+.add-btn {
+    padding: 8px;
+    height: 42px;
+    width: 42px;
+    border-radius: 30px;
+}
+
+.add-btn img {
+    height: 22px;
+}
+
+.add-btn:hover {
+    background-color: olive;
+}

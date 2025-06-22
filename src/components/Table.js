@@ -1,29 +1,30 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { deleteAction, totalAction, editExpAction,
-  displayDFormAction, displayEFormAction } from '../redux/actions';
-import './Table.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import {
+  deleteAction,
+  editExpAction,
+  displayDFormAction,
+  displayEFormAction,
+} from "../redux/actions";
+import "./Table.css";
+import plus from "../images/plus.png";
+import pencil from "../images/pencil.png";
 
 class Table extends Component {
   state = {
-    valor: '',
-    descricao: '',
-    moeda: '',
-    metodo: '',
-    tag: '',
-    editId: '',
+    valor: "",
+    descricao: "",
+    metodo: "",
+    tag: "",
+    editId: "",
   };
 
   deleteExpense = ({ target }) => {
     const { expenses, dispatch } = this.props;
     const rowId = target.parentNode.parentNode.id;
     const newExp = expenses.filter((e) => e.id !== parseFloat(rowId));
-    // newExp.forEach((e, index) => {
-    //   e.id = index;
-    // });
     dispatch(deleteAction(newExp));
-    dispatch(totalAction());
   };
 
   editExpense = ({ target }) => {
@@ -31,10 +32,9 @@ class Table extends Component {
     const { expenses, dispatch } = this.props;
     this.setState({
       editId: targetId,
-      moeda: expenses[parseFloat(targetId)].currency,
       metodo: expenses[parseFloat(targetId)].method,
       tag: expenses[parseFloat(targetId)].tag,
-      // descricao: expenses[parseFloat(targetId)].description,
+      descricao: expenses[parseFloat(targetId)].description,
       valor: expenses[parseFloat(targetId)].value,
     });
     dispatch(displayEFormAction());
@@ -42,23 +42,17 @@ class Table extends Component {
 
   editExpenseState = () => {
     const { dispatch, expenses } = this.props;
-    const { valor, descricao, moeda, metodo,
-      tag, editId } = this.state;
+    const { valor, descricao, metodo, tag, editId } = this.state;
     const real = parseFloat(editId);
     const editedExp = {
       id: expenses[real].id,
-      currency: moeda,
-      exchangeRates: expenses[real].exchangeRates,
       method: metodo,
       tag,
       value: valor,
       description: descricao,
     };
-    const newExp = expenses.map((e) => (
-      e.id === real ? editedExp : e
-    ));
+    const newExp = expenses.map((e) => (e.id === real ? editedExp : e));
     dispatch(editExpAction(newExp));
-    dispatch(totalAction());
     dispatch(displayDFormAction());
   };
 
@@ -70,113 +64,96 @@ class Table extends Component {
   };
 
   render() {
-    const { expenses, currencies, formDisplay } = this.props;
-    const { valor, descricao, metodo, moeda, tag } = this.state;
+    const { expenses, formDisplay } = this.props;        
+    const { valor, descricao, metodo, tag } = this.state;
+
     return (
       <div>
-        <h3>Table</h3>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Descrição</th>
-              <th>Tag</th>
-              <th>Método de pagamento</th>
-              <th>Valor</th>
-              <th>Moeda</th>
-              <th>Câmbio utilizado</th>
-              <th>Valor convertido</th>
-              <th>Moeda de conversão</th>
-              <th>Editar/Excluir</th>
-            </tr>
-          </thead>
-          <tbody>
-            { expenses ? expenses.map((e) => (
-              <tr key={ e.id } id={ e.id }>
-                <td>{ e.description }</td>
-                <td>{ e.tag }</td>
-                <td>{ e.method }</td>
-                <td>{ parseFloat(e.value).toFixed(2) }</td>
-                <td>{ e.exchangeRates[e.currency].name }</td>
-                <td>{ parseFloat(e.exchangeRates[e.currency].ask).toFixed(2) }</td>
-                <td>
-                  { (parseFloat(e.value) * parseFloat(e.exchangeRates[e.currency].ask))
-                    .toFixed(2) }
-                </td>
-                <td>Real</td>
-                <td>
-                  <button
-                    onClick={ this.deleteExpense }
-                    data-testid="delete-btn"
-                  >
-                    Deletar
-                  </button>
-                  <button
-                    onClick={ this.editExpense }
-                    data-testid="edit-btn"
-                  >
-                    Editar
-                  </button>
-                </td>
+        <h3 className="table-title">despesas</h3>
+        <div className="table-container">
+          <table className="table">
+            <thead>
+              <tr className="head-row">
+                <th>descrição</th>
+                <th>valor</th>
+                <th>tag</th>
+                <th>método de pagamento</th>
+                <th>editar/excluir</th>
               </tr>
-            )) : null }
-          </tbody>
-        </table>
-        { formDisplay ? (
+            </thead>
+            <tbody>
+              {expenses
+                ? expenses.map((e) => (
+                    <tr key={e.id} id={e.id}>
+                      <td>{e.description}</td>
+                      <td>R${parseFloat(e.value).toFixed(2)}</td>
+                      <td>{e.tag}</td>
+                      <td>{e.method}</td>
+                      <td>
+                        <button
+                          onClick={this.editExpense}
+                          data-testid="edit-btn"
+                          className="edit-btn"
+                        >
+                          <img src={pencil} alt="pencil" />
+                        </button>
+                        <button
+                          onClick={this.deleteExpense}
+                          className="delete-btn"
+                          data-testid="delete-btn"
+                        >
+                          <img src={plus} alt="x-sign" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                : null}
+            </tbody>
+          </table>
+        </div>
+        {formDisplay ? (
           <form>
-            <h3>Edit</h3>
-            <input
-              type="text"
-              data-testid="value-input"
-              placeholder="Valor da despesa"
-              name="valor"
-              value={ valor }
-              onChange={ this.handleChange }
-            />
+            <h3>editar despesa</h3>
             <input
               type="text"
               data-testid="description-input"
-              placeholder="Descrição da despesa"
+              placeholder="descrição da despesa"
               name="descricao"
-              value={ descricao }
-              onChange={ this.handleChange }
+              value={descricao}
+              onChange={this.handleChange}
             />
-            <select
-              data-testid="currency-input"
-              name="moeda"
-              value={ moeda }
-              onChange={ this.handleChange }
-            >
-              {currencies ? currencies.map((c, index) => (
-                <option key={ index }>{c}</option>
-              )) : null }
-            </select>
+            <input
+              type="text"
+              data-testid="value-input"
+              placeholder="valor da despesa"
+              name="valor"
+              value={valor}
+              onChange={this.handleChange}
+            />
             <select
               data-testid="method-input"
               name="metodo"
-              value={ metodo }
-              onChange={ this.handleChange }
+              value={metodo}
+              onChange={this.handleChange}
             >
-              <option>Dinheiro</option>
-              <option>Cartão de crédito</option>
-              <option>Cartão de débito</option>
+              <option>dinheiro</option>
+              <option>cartão de crédito</option>
+              <option>cartão de débito</option>
             </select>
             <select
               data-testid="tag-input"
               name="tag"
-              value={ tag }
-              onChange={ this.handleChange }
+              value={tag}
+              onChange={this.handleChange}
             >
-              <option>Alimentação</option>
-              <option>Lazer</option>
-              <option>Trabalho</option>
-              <option>Transporte</option>
-              <option>Saúde</option>
+              <option>alimentação</option>
+              <option>lazer</option>
+              <option>trabalho</option>
+              <option>transporte</option>
+              <option>saúde</option>
             </select>
-            <button
-              type="button"
-              onClick={ this.editExpenseState }
-            >
-              Editar despesa
+            <button type="button" onClick={this.editExpenseState}>
+              editar despesa
             </button>
           </form>
         ) : null}
@@ -187,7 +164,6 @@ class Table extends Component {
 
 const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
-  currencies: state.wallet.currencies,
   formDisplay: state.wallet.formDisplay,
 });
 
@@ -199,11 +175,7 @@ Table.propTypes = {
       tag: PropTypes.string,
       value: PropTypes.string,
       method: PropTypes.string,
-      exchangeRates: PropTypes.shape({
-        name: PropTypes.string,
-        ask: PropTypes.string,
-      }),
-    }),
+    })
   ),
 }.isRequired;
 

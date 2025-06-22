@@ -1,5 +1,56 @@
-table , thead , tr , th , td , tbody {
-  border: 1px solid;
-  border-collapse: collapse;
-  padding: 5px;
+table, thead, tr, th {
+  width: 100%;
+  text-align: center;
+  overflow-x: auto;
 }
+
+.table-container {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  border-radius: 15px;
+}
+
+thead, tr th {
+  color: olive;
+  padding: 5px 15px 10px;
+}
+
+th {
+  width: 150px;
+}
+
+tbody tr, tb {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.delete-btn, .edit-btn {
+  border-radius: 30px;
+  padding: 5px;
+  margin: 5px;
+  height: 36px;
+  width: 36px;
+}
+
+.delete-btn img {
+  transform: rotate(45deg);
+  height: 18px;
+}
+
+.delete-btn:hover {
+  background-color: brown;
+}
+
+.edit-btn img {
+  height: 18px;
+}
+
+
+.edit-btn:hover {
+  background-color: olive;
+}
+
+.placeholder-row td {
+  height: 70px;
+}
+

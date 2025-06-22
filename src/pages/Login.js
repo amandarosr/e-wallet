@@ -1,25 +1,30 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { inputChange } from '../redux/actions/index';
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { inputChange } from "../redux/actions/index";
+import walletLogo from "../images/walletOlive.png";
 
 class Login extends React.Component {
   state = {
-    emailInput: '',
-    passInput: '',
+    emailInput: "",
+    passInput: "",
     isDisabled: true,
   };
 
   handleChange = ({ target }) => {
     const { name, value } = target;
-    this.setState({
-      [name]: value,
-    }, this.validateInputs);
+    this.setState(
+      {
+        [name]: value,
+      },
+      this.validateInputs
+    );
   };
 
   validateInputs = () => {
     const { emailInput, passInput } = this.state;
-    const pattern = /[a-zA-Z0-9]+[\\.]?([a-zA-Z0-9]+)?[\\@][a-z]{3,9}[\\.][a-z]{2,5}/g;
+    const pattern =
+      /[a-zA-Z0-9]+[\\.]?([a-zA-Z0-9]+)?[\\@][a-z]{3,9}[\\.][a-z]{2,5}/g;
     const validateEmail = pattern.test(emailInput);
     const num = 5;
     const cases = [validateEmail, passInput.length > num];
@@ -32,46 +37,52 @@ class Login extends React.Component {
   sendToStore = () => {
     const { emailInput } = this.state;
     const { dispatch, history } = this.props;
-    dispatch(inputChange('email', emailInput));
-    history.push('/carteira');
+    dispatch(inputChange("email", emailInput));
+    history.push("/carteira");
   };
 
   render() {
     const { emailInput, passInput, isDisabled } = this.state;
     // const { history } = this.props;
     return (
-      <div>
-        <h1>Login</h1>
-        <label htmlFor="email">
-          E-mail:
-          <input
-            type="email"
-            data-testid="email-input"
-            placeholder="example@email.com"
-            id="email"
-            name="emailInput"
-            value={ emailInput }
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label htmlFor="senha">
-          Senha:
-          <input
-            type="password"
-            data-testid="password-input"
-            placeholder="abc123"
-            id="senha"
-            name="passInput"
-            value={ passInput }
-            onChange={ this.handleChange }
-          />
-        </label>
+      <div className="login-container">
+        <div className="title-container">
+          <img src={walletLogo} alt="wallet logo" className="walletLogo"/>
+          <h1 className="login-title">e-Wallet</h1>
+        </div>
+        <div className="login-inputs">
+          <label htmlFor="email" className="input-container">
+            e-mail
+            <input
+              type="email"
+              data-testid="email-input"
+              placeholder="example@email.com"
+              id="email"
+              name="emailInput"
+              value={emailInput}
+              onChange={this.handleChange}
+            />
+          </label>
+          <label htmlFor="senha" className="input-container">
+            senha
+            <input
+              type="password"
+              data-testid="password-input"
+              placeholder="abc123"
+              id="senha"
+              name="passInput"
+              value={passInput}
+              onChange={this.handleChange}
+            />
+          </label>
+        </div>
         <button
+          className="login-submit"
           type="button"
-          disabled={ isDisabled }
-          onClick={ this.sendToStore }
+          disabled={isDisabled}
+          onClick={this.sendToStore}
         >
-          Entrar
+          entrar
         </button>
       </div>
     );

@@ -1,26 +1,28 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import Header from '../components/Header';
-import WalletForm from '../components/WalletForm';
-import Table from '../components/Table';
-import { fetchCurr } from '../redux/actions';
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import Header from "../components/Header";
+import WalletForm from "../components/WalletForm";
+import Table from "../components/Table";
+import walletLogo from "../images/walletOlive.png";
+import "./Wallet.css";
 
 class Wallet extends React.Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchCurr());
-  }
+  // componentDidMount() {
+  //   const { dispatch } = this.props;
+  //   dispatch(fetchCurr());
+  // }
 
   render() {
-    const { email, currencies, total, wFormDisplay } = this.props;
+    const { email, wFormDisplay } = this.props;
     return (
-      <div>
-        <Header email={ email } total={ total } />
-        <h1>TrybeWallet</h1>
-        { wFormDisplay ? (
-          <WalletForm currencies={ currencies } title="WalletForm" />
-        ) : null }
+      <div className="wallet-page">
+        <Header email={email} />
+        <div className="title-container">
+          <img src={walletLogo} alt="wallet" className="walletLogo" />
+          <h1 className="wallet-title">e-Wallet</h1>
+        </div>
+        {wFormDisplay ? <WalletForm /> : null}
         <Table />
       </div>
     );
@@ -29,8 +31,6 @@ class Wallet extends React.Component {
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
-  currencies: state.wallet.currencies,
-  total: state.wallet.total,
   wFormDisplay: state.wallet.wFormDisplay,
 });
 
@@ -39,12 +39,6 @@ Wallet.propTypes = {
   //   push: PropTypes.func,
   // }),
   email: PropTypes.string,
-  currencies: PropTypes.arrayOf(
-    PropTypes.shape(
-      PropTypes.string,
-    ),
-  ),
-  total: PropTypes.number,
 }.isRequired;
 
 export default connect(mapStateToProps)(Wallet);
