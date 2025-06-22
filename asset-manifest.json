@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/e-wallet/static/css/main.228853ee.css",
+    "main.js": "/e-wallet/static/js/main.35d30378.js",
+    "static/media/Garet-Book.ttf": "/e-wallet/static/media/Garet-Book.927f4e0c1c6f398e18ed.ttf",
+    "index.html": "/e-wallet/index.html",
+    "main.228853ee.css.map": "/e-wallet/static/css/main.228853ee.css.map",
+    "main.35d30378.js.map": "/e-wallet/static/js/main.35d30378.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.228853ee.css",
+    "static/js/main.35d30378.js"
+  ]
+}
