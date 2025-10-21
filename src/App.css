@@ -11,6 +11,7 @@ body {
   font-family: Garet;
   font-size: 20px;
   min-height: 90vh;
+  width: 100vw;
 }
 
 .login-container {
