@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import Header from "../components/Header";
 import WalletForm from "../components/WalletForm";
 import Table from "../components/Table";
-import walletLogo from "../images/walletOlive.png";
 import "./Wallet.css";
 
 class Wallet extends React.Component {
@@ -18,12 +17,10 @@ class Wallet extends React.Component {
     return (
       <div className="wallet-page">
         <Header email={email} />
-        <div className="title-container">
-          <img src={walletLogo} alt="wallet" className="walletLogo" />
-          <h1 className="wallet-title">e-Wallet</h1>
-        </div>
         {wFormDisplay ? <WalletForm /> : null}
-        <Table />
+        <div className="table-div">
+          <Table />
+        </div>
       </div>
     );
   }

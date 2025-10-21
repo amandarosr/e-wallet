@@ -3,6 +3,11 @@
     flex-direction: column;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .email-title {
     background-color: rgba(128, 128, 0, 0.8);
     color: white;
@@ -10,7 +15,8 @@
     border-radius: 10px;
     padding: 5px 10px;
     font-size: 20px;
-    width: auto;
+    height: 30px;
+    max-width: 25%;
 }
 
 .title-container {
@@ -29,7 +35,7 @@
 .wallet-title {
     color: olive;
     text-shadow: -1px 3px 0px rgba(159,159,159,0.3);
-    font-size: 45px;
+    font-size: 40px;
 }
 
 form {

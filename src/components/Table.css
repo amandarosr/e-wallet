@@ -1,4 +1,9 @@
+.table-div {
+  width: 90vw;
+}
+
 table, thead, tr, th {
+  backdrop-filter: blur(5px);
   width: 100%;
   text-align: center;
   overflow-x: auto;
